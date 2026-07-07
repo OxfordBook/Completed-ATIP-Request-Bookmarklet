@@ -1,4 +1,4 @@
-Building on the work of https://tomcardoso.github.io/piggyback/ and https://tomcardoso.github.io/piggyback/ I built my own Completed ATIP Request Bookmarklet Generator. 
+Building on the work of https://tomcardoso.github.io/piggyback/ and https://github.com/tomcardoso/piggyback I built my own Completed ATIP Request Bookmarklet Generator. 
 
 This tool lets you fill out your personal information just once when requesting previously completed ATIP requests from the Government of Canada. Using this Bookmarklet, you can submit requests in just one click. 
 
