@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATIP Bookmarklet Generator</title>
+<title>Completed ATIP Request Bookmarklet Generator</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
 
@@ -401,7 +401,7 @@
 
 <div class="container">
   <header>
-    <h1>📋 ATIP Bookmarklet Generator</h1>
+    <h1>📋 Completed ATIP Request Bookmarklet Generator</h1>
     <p>Fill in your details below, then generate a custom bookmarklet to auto-fill the ATIP Informal Request form.</p>
     <div class="disclaimer">
       <strong>🔒 Privacy:</strong> Everything runs locally in your browser. No personal information is sent to any server — the generated bookmarklet embeds your data directly into the code you save as a bookmark. If you're still unsure, you can even disconnect from the internet while you use this page.
@@ -988,7 +988,7 @@
     const fillActions = `s('#edit-requestor-category',d.requestor);s('#edit-delivery-method',d.delivery);v('#edit-given-name',d.givenName);v('#edit-family-name',d.familyName);v('#edit-your-e-mail-address',d.email);v('#edit-your-telephone-number',d.tel);v('#edit-additional-comments',d.additionalComments);v('#edit-address-fieldset-address',d.address);v('#edit-address-fieldset-city',d.city);v('#edit-address-fieldset-state-province-select',d.province);v('#edit-address-fieldset-postal-code',d.postal);v('#edit-address-fieldset-country',d.country);s('#edit-preferred-language-of-correspondence',d.lang);v('#edit-consent','Yes');const a=document.querySelector('#edit-actions');if(a){a.classList.remove('js-webform-states-hidden');a.hidden=false;a.removeAttribute('hidden');a.style.display='block';a.style.visibility='visible';a.style.opacity='1';a.scrollIntoView&&a.scrollIntoView({behavior:'smooth',block:'center'})}`;
     const submitPart = autoSubmit ? `setTimeout(()=>{const b=document.querySelector('#edit-actions input[type=submit],#edit-actions button[type=submit]');if(b)b.click()},${submitDelay})` : '';
 
-    const code = `(()=>{if(!location.href.startsWith('https://open.canada.ca/en/search/ati/reference/'))return;const d={${dataPairs.join(',')}};const f=e=>{['input','change','blur'].forEach(t=>e.dispatchEvent(new Event(t,{bubbles:!0})))};const s=(q,t)=>{const e=document.querySelector(q);if(!e)return;const o=[...e.options].find(o=>o.text.trim()===t);if(o){e.value=o.value;f(e)}};const v=(q,v)=>{const e=document.querySelector(q);if(!e)return;e.value=v;f(e)};${fillActions}${submitPart}})()`;
+    const code = `(()=>{if(!/^https:\\/\\/open\\.canada\\.ca\\/en\\/search\\/ati\\/reference\\//.test(location.href))return;const d={${dataPairs.join(',')}};const f=e=>{['input','change','blur'].forEach(t=>e.dispatchEvent(new Event(t,{bubbles:!0})))};const s=(q,t)=>{const e=document.querySelector(q);if(!e)return;const o=[...e.options].find(o=>o.text.trim()===t);if(o){e.value=o.value;f(e)}};const v=(q,v)=>{const e=document.querySelector(q);if(!e)return;e.value=v;f(e)};${fillActions}${submitPart}})()`;
 
     return 'javascript:' + code.split('').map(ch => {
       if (ch === '"') return '%22';
